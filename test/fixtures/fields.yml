@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wave: MyString
+  position: MyString
+  image: MyString
+  board: one
+
+two:
+  wave: MyString
+  position: MyString
+  image: MyString
+  board: two
