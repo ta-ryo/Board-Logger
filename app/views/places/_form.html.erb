@@ -1,5 +1,5 @@
-<%= form_for(model: board) do |form| %>
-  <% if map.errors.any? %>
+<%= form_with(model: place, local: true) do |form| %>
+  <% if place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(map.errors.count, "error") %> prohibited this map from being saved:</h2>
 
@@ -20,14 +20,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<div id="map" style="width: 1200px; height: 800px;"></div>
-
-<script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-</script>
