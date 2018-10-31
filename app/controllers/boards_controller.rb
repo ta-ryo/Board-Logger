@@ -1,9 +1,19 @@
 class BoardsController < ApplicationController
-  def point
-    @hash = Gmaps4rails.build_markers(@map) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.address
-    end
+
+  def index
+    @boards = Board.all
+    @newBoard = Board.new
+  end
+
+  def show
+    @board = Board.find(params[:id])
+    @wave = Wave.where(board_id: params[:id])
+    @newWave = Wave.new(:board_id => params[:id])
+  end
+
+  def create
+    @board = Board.new(params[:board].permit(:location))
+    @board.save
+    redirect_to root_path
   end
 end

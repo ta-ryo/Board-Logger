@@ -1,0 +1,41 @@
+<DOCTYPE html>
+<html>
+  <head>
+    <title><%= @board.location %>のサーフポイント</title>
+  </head>
+
+  <body>
+
+    <h1><%= @board.location %></h1>
+
+    <h3>波情報</h3>
+    <%= form_for @newWave, :url => wave_create_path do |f| %>
+      <p>
+        情報 : コメント
+      </p>
+      <p>
+        <%= f.text_field :status %> : <%= f.text_field :comment %>
+      </p>
+      <%= f.hidden_field :board_id %>
+      <%= f.submit "投稿" %>
+    <% end %>
+
+      <table border="1">
+        <tr>
+          <th>波情報</th>
+          <th>コメント</th>
+        </tr>
+
+        <% @wave.each do |wave| %>
+          <tr>
+            <td><%= wave.status %></td>
+            <td><%= wave.comment %></td>
+          </tr>
+        <% end %>
+      </table>
+  </body>
+
+  <p>
+    <%= link_to "戻る", root_path %>
+  </p>
+</html>

@@ -1,0 +1,21 @@
+<DOCTYPE html>
+<html>
+  <head>
+    <title>サーフポイント一覧</title>
+  </head>
+
+  <body>
+    <h1>サーフポイント一覧</h1>
+    <ul>
+      <% @boards.each do |boards| %>
+        <li><%= link_to boards.location, boards_show_path(boards.id) %></li>
+      <% end %>
+    </ul>
+
+    <h1>サーフポイントの作成</h1>
+    <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
+      <%= f.text_field :location %>
+      <%= f.submit "サーフポイントの作成" %>
+    <% end %>
+  </body>
+</html>
