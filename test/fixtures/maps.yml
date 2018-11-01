@@ -2,12 +2,12 @@
 
 one:
   address: MyString
-  description: MyString
   latitude: 1.5
-  longitude: 1.5
+  longitude: MyString
+  board: one
 
 two:
   address: MyString
-  description: MyString
   latitude: 1.5
-  longitude: 1.5
+  longitude: MyString
+  board: two

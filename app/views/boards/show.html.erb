@@ -8,6 +8,7 @@
 
     <h1><%= @board.location %></h1>
 
+    <!-- 波情報を入力するための入力フォーム -->
     <h3>波情報</h3>
     <%= form_for @newWave, :url => wave_create_path do |f| %>
       <p>
@@ -20,6 +21,7 @@
       <%= f.submit "投稿" %>
     <% end %>
 
+    <!-- 波情報を出力するためのテーブル -->
       <table border="1">
         <tr>
           <th>波情報</th>
@@ -33,6 +35,27 @@
           </tr>
         <% end %>
       </table>
+
+      <!-- google mapを表示するための住所入力フォーム -->
+      <%= form_for @newMap, :url => gmap_create_path do |form| %>
+        <%= form.label "住所" %>
+        <%= form.text_field :address %>
+        <%= form.hidden_field :board_id %>
+        <%= form.submit %>
+      <% end %>
+
+      <!-- google mapを表示する場所> -->
+      <div id="gmap" style="width: 1200px; height: 800px;"></div>
+
+      <!-- google mapを表示するためのJS -->
+      <script>
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: 'gmap'}}, function(){
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      </script>
   </body>
 
   <p>
