@@ -10,6 +10,9 @@ class BoardsController < ApplicationController
     @wave = Wave.where(board_id: params[:id])
     @newWave = Wave.new(:board_id => params[:id])
 
+    @manner = Manner.where(board_id: params[:id])
+    @newManner = Manner.new(:board_id => params[:id])
+
     @map = Map.where(board_id: params[:id])
     @newMap = Map.new(:board_id => params[:id])
     
@@ -24,5 +27,10 @@ class BoardsController < ApplicationController
     @board = Board.new(params[:board].permit(:location))
     @board.save
     redirect_to root_path
+  end
+  def createManner
+    @manner = Manner.new(params[:manner].permit(:board_id, :entry))
+    @manner.save
+    redirect_to boards_show_path(params[:manner]['board_id'])
   end
 end

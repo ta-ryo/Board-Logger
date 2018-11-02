@@ -36,6 +36,30 @@
         <% end %>
       </table>
 
+    <!-- 波情報を入力するための入力フォーム -->
+    <h3>エントリーの仕方</h3>
+    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
+      <p>
+        <%= f.text_field :entry %> 
+      </p>
+      <%= f.hidden_field :board_id %>
+      <%= f.submit "投稿" %>
+    <% end %>
+
+    <!-- 波情報を出力するためのテーブル -->
+      <table border="1">
+        <tr>
+          <th>エントリーの仕方</th>
+        </tr>
+
+        <% @manner.each do |manner| %>
+          <tr>
+            <td><%= manner.entry %></td>
+          </tr>
+        <% end %>
+      </table>
+
+
       <!-- google mapを表示するための住所入力フォーム -->
       <%= form_for @newMap, :url => gmap_create_path do |form| %>
         <%= form.label "住所" %>
