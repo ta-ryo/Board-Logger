@@ -43,7 +43,7 @@
           <%= f.text_field :mood %>
         </p>
         <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿" %>
+        <%= f.submit "編集" %>
       <% end %>
 
       <!-- サーフポイントの雰囲気を出力するためのテーブル -->
@@ -51,12 +51,9 @@
           <tr>
             <th>サーフポイントの雰囲気</th>
           </tr>
-
-          <% @mood.each do |mood| %>
-            <tr>
-              <td><%= mood.mood %></td>
-            </tr>
-          <% end %>
+              <tr>
+                <td><%= @mood.mood %></td>
+              </tr>
         </table>
 
     <!-- エントリを入力するための入力フォーム -->
