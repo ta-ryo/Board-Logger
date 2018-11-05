@@ -19,6 +19,8 @@ class BoardsController < ApplicationController
     @map = Map.where(board_id: params[:id])
     @newMap = Map.new(:board_id => params[:id])
 
+    @photo = Photo.all
+   
     @hash = Gmaps4rails.build_markers(@map) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
