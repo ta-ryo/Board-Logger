@@ -1,4 +1,3 @@
-<DOCTYPE html>
 <html>
   <head>
     <title><%= @board.location %>のサーフポイント</title>
@@ -50,11 +49,22 @@
       <table border="1">
         <tr>
           <th>エントリーの仕方</th>
+          <th>エントリー場所の写真</th>
         </tr>
 
         <% @manner.each do |manner| %>
           <tr>
             <td><%= manner.entry %></td>
+            <td>
+            <% @photo.where(manner_id: manner.id).each do |d| %>
+                <%= image_tag d.image.url if d.image? %>
+            <% end %>
+            <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
+              <%= f.file_field :image %>
+              <%= f.hidden_field :manner_id %>
+              <%= f.submit "写真を投稿する!" %>
+            <% end %>
+            </td>
           </tr>
         <% end %>
       </table>
@@ -69,7 +79,7 @@
       <% end %>
 
       <!-- google mapを表示する場所> -->
-      <div id="gmap" style="width: 1200px; height: 800px;"></div>
+      <div id="gmap" style="width: 120px; height: 80px;"></div>
 
       <!-- google mapを表示するためのJS -->
       <script>
