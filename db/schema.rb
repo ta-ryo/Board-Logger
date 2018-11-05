@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2018_11_02_030037) do
+ActiveRecord::Schema.define(version: 2018_11_02_025632) do
 
   create_table "boards", force: :cascade do |t|
     t.string "location"
@@ -42,6 +43,12 @@ ActiveRecord::Schema.define(version: 2018_11_02_030037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["manner_id"], name: "index_photos_on_manner_id"
+    
+  create_table "moods", force: :cascade do |t|
+    t.string "mood"
+    t.integer "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "waves", force: :cascade do |t|

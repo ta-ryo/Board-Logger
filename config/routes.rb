@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post 'gmaps/create', to: 'gmap#create', as: 'gmap_create'
   post 'boards/createManner', to: 'boards#createManner', as: 'boards_createManner'
   post 'photos/create',  to: 'photos#create',  as: 'photo_create'
+  post 'waves/mood', to: 'wave#createmood', as: 'mood_create'
 end
