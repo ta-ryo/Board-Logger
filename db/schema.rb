@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_11_02_025632) do
   end
 
   create_table "moods", force: :cascade do |t|
-    t.belongs_to :board, index: true
     t.string "mood"
     t.integer "board_id"
     t.datetime "created_at", null: false
