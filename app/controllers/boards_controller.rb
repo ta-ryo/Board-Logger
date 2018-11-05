@@ -13,9 +13,12 @@ class BoardsController < ApplicationController
     @manner = Manner.where(board_id: params[:id])
     @newManner = Manner.new(:board_id => params[:id])
 
+    @mood = Mood.where(board_id: params[:id]).last
+    @newMood = Mood.new(:board_id =>params[:id])
+
     @map = Map.where(board_id: params[:id])
     @newMap = Map.new(:board_id => params[:id])
-    
+
     @hash = Gmaps4rails.build_markers(@map) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude

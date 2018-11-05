@@ -36,17 +36,39 @@
         <% end %>
       </table>
 
-    <!-- 波情報を入力するための入力フォーム -->
+      <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
+      <h3>サーフポイントの雰囲気</h3>
+      <%= form_for @newMood, :url => mood_create_path do |f| %>
+        <p>
+          <%= f.text_field :mood %>
+        </p>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "編集" %>
+      <% end %>
+
+        <!-- サーフポイントの雰囲気を出力するためのテーブル -->
+          <table border="1">
+            <tr>
+              <th>サーフポイントの雰囲気</th>
+            </tr>
+          <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
+              <tr>
+                <td><%= @mood.mood%></td>
+              </tr>
+          </table>
+          <% end %>
+
+    <!-- エントリを入力するための入力フォーム -->
     <h3>エントリーの仕方</h3>
     <%= form_for @newManner, :url => boards_createManner_path do |f| %>
       <p>
-        <%= f.text_field :entry %> 
+        <%= f.text_field :entry %>
       </p>
       <%= f.hidden_field :board_id %>
       <%= f.submit "投稿" %>
     <% end %>
 
-    <!-- 波情報を出力するためのテーブル -->
+    <!-- エントリを出力するためのテーブル -->
       <table border="1">
         <tr>
           <th>エントリーの仕方</th>
