@@ -1,0 +1,39 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background-color: lightblue;
+}
+
+.jumbotron {
+  background: image-url("surf.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  padding-bottom: 200px
+}
+
+.jumbotron h1 {
+  color: #F5F5F5;
+}
+
+.form-inline {
+  margin-left: 100px;
+  margin-bottom: 15px;
+}
+
+.list-group-item {
+  margin-left: 100px;
+}
+
+.box11{
+    padding: 0.5em 1em;
+    margin: 2em 300px 0 50px;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.box11 p {
+    margin: 0;
+    padding: 0;
+}
