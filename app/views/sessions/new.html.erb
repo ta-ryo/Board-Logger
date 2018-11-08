@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <div class="box11">
+
+      <p><%= flash[:danger] %></p>
+
+      <h1 style="margin-left: 100px">ログインページ</h1>
+
+      <%= form_for(:session, url: login_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control mb-2 mr-sm-2" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control mb-2 mr-sm-2" %>
+
+        <p>
+          <%= f.submit "Log in!!", class: "btn btn-primary mb-2" %>
+        </p>
+
+      <% end %>
+
+      <p>New user? <%= link_to "Sign up now!", user_new_path %></p>
+
+      <p>
+        <%= link_to "ホームに戻る", root_path %>
+      </p>
+
+    </div>
+  </body>
+</html>
