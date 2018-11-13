@@ -9,11 +9,21 @@
     </div>
 
     <div class="box11">
-      <h1 style="margin-left: 100px">サーフポイントの作成</h1>
+
+
+      <!-- Sign in, Log in に成功したらでるメッセージ -->
+      <p><%= flash[:success] %></p>
+
+      <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
+      <h1> <%= @user.name %> さんのページ </h1>
+      <h1>サーフポイントの作成</h1>
+      </div>
+
       <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
         <div class="form-inline">
-          <%= f.text_field :location, class: "form-control mb-2 mr-sm-2" %>
-          <%= f.submit "サーフポイントの作成", class: "btn btn-primary mb-2" %>
+          <%= f.text_field :location, class: "form-control mb-2 mr-sm-2 input-lg" %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "サーフポイントの作成", class: "btn btn-primary mb-2 btn-lg" %>
         </div>
       <% end %>
 
@@ -24,6 +34,14 @@
         </li>
         <% end %>
       </ul>
+
+      <!-- ログアウトする。home画面に戻る -->
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= link_to "Log out", logout_path, method: :delete %>
+        </li>
+      </ul>
+
     </div>
   </body>
 </html>
