@@ -52,7 +52,6 @@
       <div class="form-horizontal">
         <%=f.label "情報"%>
         <%=f.select:status, [["波のサイズを入力してください",""],["腰","腰"],["腹","腹"],["胸","胸"],["頭","頭"],["頭オーバー","頭オーバー"]] %>
-          <%=f.select:status, [["",""],["腰","腰"],["腹","腹"],["胸","胸"],["頭","頭"],["頭オーバー","頭オーバー"]] %>
         <%= f.label "コメント" %>
         <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
         <%= f.hidden_field :board_id %>
