@@ -32,19 +32,7 @@
         </div>
       <% end %>
 
-    <!-- 波情報を入力するための入力フォーム -->
     <h3>波情報</h3>
-    <%= form_for @newWave, :url => wave_create_path do |f| %>
-      <div class="form-horizontal">
-        <%=f.label "情報"%>
-        <%= f.text_field :status, class: "form-control mb-2 mr-sm-2" , placeholder: "情報"%>
-        <%= f.label "コメント" %>
-        <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
-        <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-lg"%>
-      </div>
-    <% end %>
-
     <!-- 波情報を出力するためのテーブル -->
       <table class="table table-bordered">
         <tr>
@@ -59,9 +47,29 @@
           </tr>
         <% end %>
       </table>
+    <!-- 波情報を入力するための入力フォーム -->
+    <%= form_for @newWave, :url => wave_create_path do |f| %>
+      <div class="form-horizontal">
+        <%=f.label "情報"%>
+        <%= f.text_field :status, class: "form-control mb-2 mr-sm-2" , placeholder: "情報"%>
+        <%= f.label "コメント" %>
+        <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-lg"%>
+      </div>
+    <% end %>
+
+      <h3>サーフポイントの雰囲気</h3>
+      <!-- サーフポイントの雰囲気を出力するためのテーブル -->
+        <table class="table table-bordered">
+        <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
+            <tr>
+              <td><%= @mood.mood%></td>
+            </tr>
+        <% end %>
+        </table>
 
       <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
-      <h3>サーフポイントの雰囲気</h3>
       <%= form_for @newMood, :url => mood_create_path do |f| %>
         <div class="form-horizontal">
           <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
@@ -70,35 +78,10 @@
         </div>
       <% end %>
 
-        <!-- サーフポイントの雰囲気を出力するためのテーブル -->
-          <table class="table table-bordered">
-            <tr>
-              <th>サーフポイントの雰囲気</th>
-            </tr>
-          <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
-              <tr>
-                <td><%= @mood.mood%></td>
-              </tr>
-          <% end %>
-          </table>
 
-    <!-- エントリを入力するための入力フォーム -->
     <h3>エントリーの仕方</h3>
-    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
-      <div class="form-horizontal">
-        <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
-        <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-lg" %>
-      </div>
-    <% end %>
-
     <!-- エントリを出力するためのテーブル -->
       <table class="table table-bordered">
-        <tr>
-          <th>エントリーの仕方</th>
-          <th>エントリー場所の写真</th>
-        </tr>
-
         <% @manner.each do |manner| %>
           <tr>
             <td><%= manner.entry %></td>
@@ -115,6 +98,16 @@
           </tr>
         <% end %>
       </table>
+      <!-- エントリを入力するための入力フォーム -->
+    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
+      <div class="form-horizontal">
+        <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-lg" %>
+      </div>
+    <% end %>
+
+
     <p>
       <%= link_to "戻る", board_path(@board.user_id) %>
     </p>
