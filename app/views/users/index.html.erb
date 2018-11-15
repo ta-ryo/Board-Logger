@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <div class="box11">
+
+      <ul class="list-group" style="max-width: 300px;">
+        <% @user.each do |users| %>
+          <li class="list-group-item">
+            ・<%= users.name %>
+          </li>
+        <% end %>
+      </ul>
+
+      <p>
+        <%= link_to "ホームに戻る", root_path %>
+      </p>
+
+    </div>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :correct_user
 
   def index
     @user = User.find(params[:id])
@@ -43,4 +44,15 @@ class BoardsController < ApplicationController
     @manner.save
     redirect_to boards_show_path(params[:manner]['board_id'])
   end
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @user = User.find(params[:id])
+    if logged_in?
+      redirect_to(board_path(current_user.id)) unless current_user?(@user)
+    else
+      redirect_to login_path
+    end
+  end
+
 end
