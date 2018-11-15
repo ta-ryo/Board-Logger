@@ -1,8 +1,9 @@
 class BoardsController < ApplicationController
 
   def index
-    @boards = Board.all
-    @newBoard = Board.new
+    @user = User.find(params[:id])
+    @boards = Board.where(user_id: params[:id])
+    @newBoard = Board.new(user_id: params[:id])
   end
 
   def show
@@ -29,9 +30,13 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(params[:board].permit(:location))
-    @board.save
-    redirect_to root_path
+    @board = Board.new(params[:board].permit(:location, :user_id))
+    if @board.save
+      redirect_to board_path(@board.user_id)
+    else
+      p @board.errors.full_messages
+      redirect_to board_path(@board.user_id)
+    end
   end
   def createManner
     @manner = Manner.new(params[:manner].permit(:board_id, :entry))

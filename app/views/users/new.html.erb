@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <div class="box11">
+
+      <h1 style="margin-left: 100px">ユーザーの作成</h1>
+      <!-- Userを登録する。 登録が完了するとUserのBoardページに飛ぶ。 -->
+      <%= form_for @user, :url => user_create_path do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control mb-2 mr-sm-2" %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control mb-2 mr-sm-2" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control mb-2 mr-sm-2" %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: "form-control mb-2 mr-sm-2" %>
+
+        <p>
+        <%= f.submit "Create my account", class: "btn btn-primary mb-2" %>
+        </p>
+
+      <% end %>
+
+      <p>
+        <%= link_to "ホームに戻る", root_path %>
+      </p>
+
+    </div>
+  </body>
+</html>

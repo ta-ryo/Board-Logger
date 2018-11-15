@@ -4,17 +4,44 @@
   </head>
 
   <body>
-    <h1>サーフポイント一覧</h1>
-    <ul>
-      <% @boards.each do |boards| %>
-        <li><%= link_to boards.location, boards_show_path(boards.id) %></li>
-      <% end %>
-    </ul>
+    <div class="jumbotron mt-4">
+      <h1>サーフポイント一覧</h1>
+    </div>
 
-    <h1>サーフポイントの作成</h1>
-    <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
-      <%= f.text_field :location %>
-      <%= f.submit "サーフポイントの作成" %>
-    <% end %>
+    <div class="box11">
+
+
+      <!-- Sign in, Log in に成功したらでるメッセージ -->
+      <p><%= flash[:success] %></p>
+
+      <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
+      <h1> <%= @user.name %> さんのページ </h1>
+      <h1>サーフポイントの作成</h1>
+      </div>
+
+      <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
+        <div class="form-inline">
+          <%= f.text_field :location, class: "form-control mb-2 mr-sm-2 input-lg" %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "サーフポイントの作成", class: "btn btn-primary mb-2 btn-lg" %>
+        </div>
+      <% end %>
+
+      <ul class="list-group" style="max-width: 300px;">
+        <% @boards.each do |boards| %>
+        <li class="list-group-item">
+          ・<%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+        </li>
+        <% end %>
+      </ul>
+
+      <!-- ログアウトする。home画面に戻る -->
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= link_to "Log out", logout_path, method: :delete %>
+        </li>
+      </ul>
+
+    </div>
   </body>
 </html>
