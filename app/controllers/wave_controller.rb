@@ -1,6 +1,6 @@
 class WaveController < ApplicationController
   def create
-    @wave = Wave.new(params[:wave].permit(wave_prams))
+    @wave = Wave.new(params[:wave].permit(params[:wave].permit(:board_id, :status, :comment, :windway, :shore, :windpower, :swell, :swellway)))
     @wave.save
     redirect_to boards_show_path(params[:wave]['board_id'])
   end
