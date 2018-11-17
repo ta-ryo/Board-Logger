@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+  before_action :logged_in_user
+  before_action :correct_user,   only: [:index]
+  before_action :correct_board,  only: [:show]
 
   def index
     @user = User.find(params[:id])
@@ -43,4 +46,26 @@ class BoardsController < ApplicationController
     @manner.save
     redirect_to boards_show_path(params[:manner]['board_id'])
   end
+
+  # beforeアクション
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_path
+    end
+  end
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(board_path(current_user.id)) unless current_user?(@user)
+  end
+
+  # ログインしているユーザーのボードかどうか確認
+  def correct_board
+    @board = Board.find(params[:id])
+    redirect_to(board_path(current_user.id)) unless current_board?(@board)
+  end
+
 end
