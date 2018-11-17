@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_042116) do
+ActiveRecord::Schema.define(version: 2018_11_16_010436) do
 
   create_table "boards", force: :cascade do |t|
     t.string "location"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 2018_11_08_042116) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.string "windpower"
+    t.string "windway"
+    t.string "shore"
+    t.string "swell"
+    t.string "swellway"
     t.index ["board_id"], name: "index_waves_on_board_id"
   end
 
