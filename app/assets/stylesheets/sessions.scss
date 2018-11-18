@@ -1,3 +1,32 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//　PC用に
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+    h1{
+        margin-left: 100px
+    }
+}
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+    //　画面サイズが767px以下の場合読み込む
+    body{
+        //h1タグ(ログインページ)を操作
+        h1{
+            text-align: center
+        }
+        //f.labelの文字の大きさ指定
+        label{
+            font-size:60px;
+        }
+        //link_to の文字の大きさを指定
+        a{
+            font-size:50px; 
+        }
+
+    }
+}

@@ -46,6 +46,10 @@ body {
     padding: 0;
 }
 
+//全部に影響
+.form-control {//テキストエリアのcss を設定
+  margin-bottom: 10px;
+}
 
 /*スマホ用のCSS*//*PC用CSSに上書きしている*/
 @media only screen and (max-device-width: 768px) {
@@ -93,8 +97,9 @@ body {
   .form-horizontal{//bootstrapの機能
     font-size:40px;
   }
-  .form-control {//テキストエリアの中の文字の大きさ
+  .form-control {//テキストエリアのcss を設定
     font-size:40px;
+    margin-bottom: 5px;
   }
   .btn{
     font-size:40px;//ボタンの中の文字の大きさを変更
