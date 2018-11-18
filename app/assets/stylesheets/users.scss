@@ -1,6 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// users.scssをusers/new.html.erbに読み込もうとすると、「エラー処理の記述が定義されてない」となるのを解消するため
+@import "application";//application.ccssの内容を,importしているっぽい --> @import "bootstrap"; が引き継ぎされることで解消
+
 #error_explanation {
   color: red;
   ul {
@@ -13,5 +17,33 @@
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
+  }
+}
+
+//　PC用に
+@media screen and (min-device-width:768px){
+  //画面サイズが768px以上の場合読み込む
+  h1{
+      margin-left: 100px
+  }
+}
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+  //　画面サイズが767px以下の場合読み込む
+  body{
+      //h1タグ(ログインページ)を操作
+      h1{
+          text-align: center
+      }
+      //f.labelの文字の大きさ指定
+      label{
+          font-size:60px;
+      }
+      //link_to の文字の大きさを指定
+      a{
+          font-size:50px; 
+      }
+
   }
 }

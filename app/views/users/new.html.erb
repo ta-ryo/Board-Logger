@@ -1,8 +1,12 @@
 <html>
+  <head>
+  <!--scss の読み込み-->
+  <%= stylesheet_link_tag "users", :media => "all" %>
+  </head>
   <body>
     <div class="box11">
 
-      <h1 style="margin-left: 100px">ユーザーの作成</h1>
+      <h1>ユーザーの作成</h1>
       <!-- Userを登録する。 登録が完了するとUserのBoardページに飛ぶ。 -->
       <%= form_for @user, :url => user_create_path do |f| %>
         <%= render 'shared/error_messages' %>
