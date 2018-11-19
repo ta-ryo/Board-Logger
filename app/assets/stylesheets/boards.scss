@@ -1,3 +1,92 @@
 // Place all the styles related to the boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+
+    // boards/index.html.erbに影響するの
+    .jumbotron {
+        background: image-url("surf.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        padding-bottom: 200px;
+      }
+    .jumbotron h1 {
+        color: #F5F5F5;
+    }
+    .showPC{
+        margin-left: 100px;
+    }
+    .list-group{
+        max-width: 180px;
+    }
+    .list-group-item {
+        margin-left: 100px;
+    }
+
+    // boards/show.html.erb に影響
+    .form-horizontal {
+        margin-bottom: 15px;
+    }
+
+    // boards/index.html.erb boards/show.html.erb に影響
+    .form-inline {
+        margin-left: 100px;
+        margin-bottom: 15px;
+    }
+}
+
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+    //　画面サイズが767px以下の場合読み込む
+
+    // boards/index.html.erbに影響するの
+    .jumbotron {
+        background: image-url("surf.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        padding-bottom: 200px;
+    }
+    .jumbotron h1{
+        font-size: 100px;
+        position: relative;
+        top: 185px;
+    }
+    .showPC{
+        margin-left: 10px;
+    }
+    .list-group{
+        max-width: 100px;
+    }
+    .list-group-item {
+        margin-left: 10px;
+    }
+
+    // boards/show.html.erb に影響
+    .form-horizontal{//bootstrapの機能
+        font-size:40px;
+    }
+    .table{
+        font-size:25px;
+    }
+    h3 {
+        font-size:60px;
+        color:black; 
+    }
+    h1{
+        font-size:60px;
+    }
+
+
+    // boards/index.html.erb boards/show.html.erb に影響
+    .form-inline {//bootstrapの機能
+        margin-left: 10px;
+        margin-bottom: 15px;
+        padding: 14px 24px;
+        font-size:40px;
+    }
+}

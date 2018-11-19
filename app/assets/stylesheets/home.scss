@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//　PC用に
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+    .jumbotron{
+        background-image: url("surfing.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        padding-bottom: 200px;
+    }
+    .jumbotron h1 {
+        color: #F5F5F5;
+    }
+    .jumbotron h2 {
+        color: #F5F5F5;
+    }
+}
+
 // スマホ用に
 @media screen and (max-device-width:767px) {
     .jumbotron{
