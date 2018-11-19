@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <div class="box11">
+
+      <%= form_tag(boards_search_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+      <% end %>
+
+      <h1 style="margin-left: 100px">ユーザーの検索</h1>
+      <% unless @other.nil? %>
+        <% @other.each do |user| %>
+          <li class="list-group-item">
+            <%= link_to user.name, board_path(user.id) %>
+          </li>
+        <% end %>
+      <% end %>
+
+      <p>
+        <%= link_to "ホームに戻る", root_path %>
+      </p>
+
+    </div>
+  </body>
+</html>
