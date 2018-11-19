@@ -6,7 +6,7 @@
 @media screen and (min-device-width:768px){
     //画面サイズが768px以上の場合読み込む
     .jumbotron{
-        background-image: url("surfing.jpg");
+        background: image-url("surfing.jpg");
         background-size: cover;
         background-position: center 60%;
         padding-bottom: 200px;
