@@ -5,63 +5,76 @@ body {
   background-color: lightblue;
 }
 
-/*index.html に影響*/
-.jumbotron {
-  background: image-url("surf.jpg");
-  background-size: cover;
-  background-position: center 60%;
-  padding-bottom: 200px;
-}
-.jumbotron h1 {
-  color: #F5F5F5;
-}
-.showPC{
-  margin-left: 100px;
-}
-.list-group{
-  max-width: 180px;
-}
-
-/*index.html show.html に影響*/
-.form-inline {
-  margin-left: 100px;
-  margin-bottom: 15px;
-}
-.form-horizontal {
-  margin-bottom: 15px;
-}
-.list-group-item {
-  margin-left: 100px;
-}
-.box11{
-    padding: 0.5em 1em;
-    margin: 2em 300px 0 50px;
-    color: #5d627b;
-    background: white;
-    border-top: solid 5px #5d627b;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-}
-.box11 p {
-    margin: 0;
-    padding: 0;
-}
-
-//全部に影響
-.form-control {//テキストエリアのcss を設定
-  margin-bottom: 10px;
-}
-
-/*スマホ用のCSS*//*PC用CSSに上書きしている*/
-@media only screen and (max-device-width: 768px) {
-  /*index.html.erbに影響するcss*/
+//　PC用に
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+  /*index.html に影響*/
+  .jumbotron {
+    background: image-url("surf.jpg");
+    background-size: cover;
+    background-position: center 60%;
+    padding-bottom: 200px;
+  }
+  .jumbotron h1 {
+    color: #F5F5F5;
+  }
   .showPC{
-    margin-left: 10px;
+    margin-left: 100px;
+  }
+  .list-group{
+    max-width: 180px;
+  }
+
+  /*index.html show.html に影響*/
+  .form-inline {
+    margin-left: 100px;
+    margin-bottom: 15px;
+  }
+  .form-horizontal {
+    margin-bottom: 15px;
+  }
+  .list-group-item {
+    margin-left: 100px;
+  }
+  .box11{
+      padding: 0.5em 1em;
+      margin: 2em 300px 0 50px;
+      color: #5d627b;
+      background: white;
+      border-top: solid 5px #5d627b;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  }
+  .box11 p {
+      margin: 0;
+      padding: 0;
+  }
+
+  //全部に影響
+  .form-control {//テキストエリアのcss を設定
+    margin-bottom: 10px;
+  }
+}
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+  //　画面サイズが767px以下の場合読み込む
+
+  /*index.html.erbに影響するcss*/
+  .jumbotron {
+    background: image-url("surf.jpg");
+    background-size: cover;
+    background-position: center 60%;
+    padding-bottom: 200px;
   }
   .jumbotron h1{
     font-size: 100px;
     position: relative;
     top: 185px;
   }
+  .showPC{
+    margin-left: 10px;
+  }
+
   .list-group-item {
     margin-left: 10px;
   }
@@ -86,7 +99,16 @@ body {
     font-size:60px;
   }
   .box11{
-    margin: 2em 10px 0 10px; 
+    padding: 0.5em 1em;
+    margin: 2em 10px 0 10px; //PCと違う
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  }
+  .box11 p {
+    margin: 0;
+    padding: 0;
   }
   .form-inline {//bootstrapの機能
     margin-left: 10px;

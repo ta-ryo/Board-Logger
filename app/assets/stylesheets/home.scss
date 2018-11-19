@@ -13,6 +13,9 @@
         bottom:0%;
 
         background-image: url("surfing.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        //padding-bottom: 200px;
         z-index:-1; //背面に表示する
 
         .AppExplanation{
