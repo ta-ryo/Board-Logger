@@ -5,96 +5,51 @@ body {
   background-color: lightblue;
 }
 
-/*index.html に影響*/
-.jumbotron {
-  background: image-url("surf.jpg");
-  background-size: cover;
-  background-position: center 60%;
-  padding-bottom: 200px;
-}
-.jumbotron h1 {
-  color: #F5F5F5;
-}
-.showPC{
-  margin-left: 100px;
-}
-.list-group{
-  max-width: 180px;
+//　PC用に
+@media screen and (min-device-width:768px){
+  //画面サイズが768px以上の場合読み込む
+
+  //全部に影響
+  .box11{
+      padding: 0.5em 1em;
+      margin: 2em 300px 0 50px;
+      color: #5d627b;
+      background: white;
+      border-top: solid 5px #5d627b;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  }
+  .box11 p {
+      margin: 0;
+      padding: 0;
+  }
+  .form-control {//テキストエリアのcss を設定
+    margin-bottom: 10px;
+  }
 }
 
-/*index.html show.html に影響*/
-.form-inline {
-  margin-left: 100px;
-  margin-bottom: 15px;
-}
-.form-horizontal {
-  margin-bottom: 15px;
-}
-.list-group-item {
-  margin-left: 100px;
-}
-.box11{
+// スマホ用に
+@media screen and (max-device-width:767px) {
+  //　画面サイズが767px以下の場合読み込む
+
+  body{
+    zoom: 300%;//全体的にズームをし、大きくした
+  }
+  .box11{
     padding: 0.5em 1em;
-    margin: 2em 300px 0 50px;
+    margin: 2em 10px 0 10px; //PCと違う
     color: #5d627b;
     background: white;
     border-top: solid 5px #5d627b;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-}
-.box11 p {
+  }
+  .box11 p {
     margin: 0;
     padding: 0;
-}
-
-
-/*スマホ用のCSS*//*PC用CSSに上書きしている*/
-@media only screen and (max-device-width: 768px) {
-  /*index.html.erbに影響するcss*/
-  .showPC{
-    margin-left: 10px;
-  }
-  .jumbotron h1{
-    font-size: 100px;
-    position: relative;
-    top: 185px;
-  }
-  .list-group-item {
-    margin-left: 10px;
-  }
-  .list-group{
-    max-width: 100px;
   }
 
-  /*show.html.erb に影響するcss*/
-  .table{
-    font-size:25px;
-  }
-  h3 {
-    font-size:60px;
-    color:black; 
-  }
-
-  /*index.html.erb show.html.erb に影響するcss*/
-  body{
-    zoom: 300%;//全体的にズームをし、大きくした
-  }
-  h1{
-    font-size:60px;
-  }
-  .box11{
-    margin: 2em 10px 0 10px; 
-  }
-  .form-inline {//bootstrapの機能
-    margin-left: 10px;
-    margin-bottom: 15px;
-    padding: 14px 24px;
+  .form-control {//テキストエリアのcss を設定
     font-size:40px;
-  }
-  .form-horizontal{//bootstrapの機能
-    font-size:40px;
-  }
-  .form-control {//テキストエリアの中の文字の大きさ
-    font-size:40px;
+    margin-bottom: 5px;
   }
   .btn{
     font-size:40px;//ボタンの中の文字の大きさを変更
