@@ -16,3 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 #scssをプリコンパイル(使えるように)対象にする
 Rails.application.config.assets.precompile += %w( sessions.css )
 Rails.application.config.assets.precompile += %w( users.css )
+Rails.application.config.assets.precompile += %w( home.css )
