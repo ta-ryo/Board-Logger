@@ -4,9 +4,9 @@
 
       <h1 style="margin-left: 100px">ユーザーの作成</h1>
       <!-- Userを登録する。 登録が完了するとUserのBoardページに飛ぶ。 -->
-      <%= form_for @user, :url => user_create_path do |f| %>
+      <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
-        
+
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control mb-2 mr-sm-2" %>
 

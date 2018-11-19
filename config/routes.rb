@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy', as: 'logout'
 
-  get  'users/new',    to: 'users#new',    as: 'user_new'
-  post 'users/create', to: 'users#create', as: 'user_create'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   get 'boards/search', to: 'boards#search', as: 'boards_search'
   get 'boards/:id',  to: 'boards#index', as: 'board'
