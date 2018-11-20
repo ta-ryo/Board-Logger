@@ -21,7 +21,7 @@ class BoardsController < ApplicationController
     @newMap = Map.new(:board_id => params[:id])
 
     @photo = Photo.all
-   
+
     @hash = Gmaps4rails.build_markers(@map) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
@@ -38,6 +38,15 @@ class BoardsController < ApplicationController
       redirect_to board_path(@board.user_id)
     end
   end
+
+# ボード削除用変数設定
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    flash[:success] = "Board deleted"
+    redirect_to board_path(@board.user_id)
+  end
+
   def createManner
     @manner = Manner.new(params[:manner].permit(:board_id, :entry))
     @manner.save

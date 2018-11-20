@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'boards/:id',  to: 'boards#index', as: 'board'
   get 'boards/show/:id', to: 'boards#show', as: 'boards_show'
   post 'boards/create', to: 'boards#create'
+  delete 'boards/:id', to: 'boards#destroy'
 
   post 'waves/create', to: 'wave#create', as: 'wave_create'
   post 'gmaps/create', to: 'gmap#create', as: 'gmap_create'
