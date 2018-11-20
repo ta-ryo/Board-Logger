@@ -71,6 +71,6 @@ class BoardsController < ApplicationController
   # ログインしているユーザーのボードかどうか確認
   def correct_board
     @board = Board.find(params[:id])
-    redirect_to(board_path(current_user.id)) unless current_board?(@board)
+    redirect_to(board_path(current_user.id)) unless current_board?(@board) || accessfollow?(@board.user)
   end
 end
