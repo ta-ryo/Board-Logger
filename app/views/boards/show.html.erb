@@ -43,6 +43,7 @@
           <th>風速</th>
           <th>ウネリのサイズ</th>
           <th>ウネリの向き</th>
+          <th>ブレイクの種類</th>
           <th>コメント</th>
         </tr>
 
@@ -55,6 +56,7 @@
             <td><%= wave.windpower %></td>
             <td><%= wave.swell %></td>
             <td><%= wave.swellway %></td>
+            <td><%= wave.bottom %></td>
             <td><%= wave.comment %></td>
           </tr>
         <% end %>
@@ -74,6 +76,8 @@
         <%=f.select:shore, [["",""],["オフショア","オフショア"],["サイドオフ","サイドオフ"],["サイドオン","サイドオン"],["オンショア","オンショア"]] %>
         <%=f.label "風の強さ"%>
         <%=f.select:windpower, [["",""],["~2.0","~2.0"],["~4.0","~4.0"],["~6.0","~6.0"],["~8.0","~8.0"]] %>
+        <%=f.label "ブレイクの種類"%>
+        <%=f.select:windpower, [["",""],["リーフ","リーフ"],["ビーチ","ビーチ"]] %>
         <%= f.label "コメント" %>
         <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
         <%= f.hidden_field :board_id %>
