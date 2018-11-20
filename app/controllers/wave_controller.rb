@@ -14,7 +14,7 @@ class WaveController < ApplicationController
   private
 
 def  wave_prams
-  params[:wave].permit(:board_id, :status, :comment, :windway, :shore, :windpower, :swell, :swellway, :created_at)
+  params[:wave].permit(:board_id, :status, :comment, :windway, :shore, :windpower, :swell, :swellway)
 end
 
 end
