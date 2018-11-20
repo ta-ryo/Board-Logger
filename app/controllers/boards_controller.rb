@@ -1,7 +1,10 @@
 class BoardsController < ApplicationController
+  before_action :logged_in_user
+  before_action :correct_board,  only: [:show]
 
   def index
     @user = User.find(params[:id])
+    @users = @user.followers
     @boards = Board.where(user_id: params[:id])
     @newBoard = Board.new(user_id: params[:id])
   end
@@ -29,6 +32,11 @@ class BoardsController < ApplicationController
     end
   end
 
+  def search
+    @users = User.all
+    @other = User.search(params[:search])
+  end
+
   def create
     @board = Board.new(params[:board].permit(:location, :user_id))
     if @board.save
@@ -39,6 +47,7 @@ class BoardsController < ApplicationController
     end
   end
 
+
 # ボード削除用変数設定
   def destroy
     @board = Board.find(params[:id])
@@ -47,9 +56,31 @@ class BoardsController < ApplicationController
     redirect_to board_path(@board.user_id)
   end
 
+
   def createManner
     @manner = Manner.new(params[:manner].permit(:board_id, :entry))
     @manner.save
     redirect_to boards_show_path(params[:manner]['board_id'])
+  end
+
+  # beforeアクション
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_path
+    end
+  end
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(board_path(current_user.id)) unless current_user?(@user)
+  end
+
+  # ログインしているユーザーのボードかどうか確認
+  def correct_board
+    @board = Board.find(params[:id])
+    redirect_to(board_path(current_user.id)) unless current_board?(@board)
   end
 end
