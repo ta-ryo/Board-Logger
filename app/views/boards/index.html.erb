@@ -33,22 +33,32 @@
           <% end %>
         <% end %>
 
+
         <ul class="list-group" style="max-width: 300px;">
           <% @boards.each do |boards| %>
           <li class="list-group-item">
-            ・<%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+            <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
           </li>
           <% end %>
         </ul>
 
+        <h1 style="padding-left: 100px">共有されているユーザー</h1>
+          <ul class="list-group" style="max-width: 300px;">
+            <% @users.each do |users| %>
+              <li class="list-group-item">
+                <%= link_to users.name, board_path(users.id) %>
+              </li>
+            <% end %>
+          </ul>
+
         <% if @user == current_user %>
         <!-- ユーザーを検索フォームへ遷移するボタン -->
-        <ul class="list-group" style="max-width: 320px;">
+        <ul class="list-group" style="max-width: 320px; padding-top: 50px;">
           <li class="list-group-item">
             <%= link_to "ユーザーを検索する", boards_search_path %>
           </li>
         </ul>
-        
+
           <%= link_to "Log out", logout_path, method: :delete %>
         <% else %>
           <%= link_to "Homeに戻る", root_path %>
