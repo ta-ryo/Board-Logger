@@ -1,3 +1,70 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//　PC用に
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+    .jumbotron{
+        background: image-url("surfing.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        padding-bottom: 200px;
+    }
+    .jumbotron h1 {
+        color: #F5F5F5;
+    }
+    .jumbotron h2 {
+        color: #F5F5F5;
+    }
+}
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+    .jumbotron{
+        //.jumbotronタグの位置を指定
+        position: fixed;//絶対位置
+        left:0%;
+        right:0%;
+        top:0%;
+        bottom:0%;
+
+        background: image-url("surfing.jpg");
+        background-size: cover;
+        background-position: center 60%;
+        //padding-bottom: 200px;
+        z-index:-1; //背面に表示する
+
+        .AppExplanation{
+            position: absolute;
+            top: 65%;
+
+            h1{
+                font-size:90px;
+                color: #F5F5F5;
+                position: relative;//application.scssが悪さしてるから
+                top: 0px;//application.scssが悪さしてるから
+            }
+            h2{
+                color: #F5F5F5;
+                font-size:50px;
+                text-align:center;
+            }
+        }
+    }
+
+    .LogIn_SignUp{
+        position: relative;
+        top:100vh; //元の位置より、画面の縦サイズ下に移動
+        background-color:lightblue;
+
+        padding-bottom:20px;
+    }
+
+    .btn{
+        font-size:70px;//ボタンの中の文字の大きさを変更
+        margin-top:20px;
+        margin-left:20px;
+        margin-right:20px;
+    }
+}
