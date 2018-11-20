@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
+    @users = @user.followers
     @boards = Board.where(user_id: params[:id])
     @newBoard = Board.new(user_id: params[:id])
   end
