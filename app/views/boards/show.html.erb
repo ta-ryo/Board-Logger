@@ -37,6 +37,7 @@
     <!-- 波情報を出力するためのテーブル -->
       <table class="table table-bordered">
         <tr>
+          <th>日付</th>
           <th>サイズ</th>
           <th>風向き</th>
           <th>何ショア</th>
@@ -48,6 +49,7 @@
 
         <% @wave.each do |wave| %>
           <tr>
+            <td><%= wave.created_at %></td>
             <td><%= wave.status %></td>
             <td><%= wave.windway %></td>
             <td><%= wave.shore %></td>
@@ -98,7 +100,6 @@
           <%= f.submit "編集", class: "btn btn-primary mb-2 btn-lg"%>
         </div>
       <% end %>
-
 
     <h3>エントリーの仕方</h3>
     <!-- エントリを出力するためのテーブル -->
