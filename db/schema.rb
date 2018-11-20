@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_11_20_053451) do
 
-ActiveRecord::Schema.define(version: 2018_11_20_053451) do
-
-ActiveRecord::Schema.define(version: 2018_11_18_093937) do
-
-
   create_table "boards", force: :cascade do |t|
     t.string "location"
     t.datetime "created_at", null: false
