@@ -43,6 +43,7 @@
           <li class="list-group-item">
             <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
           </li>
+          <%= link_to "削除する", board_path(boards.id), method: :delete %>
           <% end %>
         </ul>
 
