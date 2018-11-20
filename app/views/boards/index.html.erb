@@ -39,11 +39,12 @@
 
 
         <ul class="list-group" style="max-width: 300px;">
+        <!--<ul class="list-group"> -->
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+            <!-- <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm"%> -->
           </li>
-          <%= link_to "削除する", board_path(boards.id), method: :delete %>
           <% end %>
         </ul>
 
