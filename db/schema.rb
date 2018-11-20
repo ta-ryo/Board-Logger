@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_11_20_053451) do
-
-ActiveRecord::Schema.define(version: 2018_11_18_093937) do
-
 
   create_table "boards", force: :cascade do |t|
     t.string "location"
