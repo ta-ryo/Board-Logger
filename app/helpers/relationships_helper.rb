@@ -4,4 +4,8 @@ module RelationshipsHelper
   def access?(user)
     user.following.include?(current_user)
   end
+
+  def accessfollow?(user)
+    current_user.followers.include?(user)
+  end
 end
