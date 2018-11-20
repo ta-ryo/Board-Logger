@@ -56,7 +56,6 @@ class BoardsController < ApplicationController
     redirect_to board_path(@board.user_id)
   end
 
-
   def createManner
     @manner = Manner.new(params[:manner].permit(:board_id, :entry))
     @manner.save
