@@ -20,7 +20,7 @@
 
         <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
         <h1> <%= @user.name %> さんのページ </h1>
-        <% if @use == current_user %>
+        <% if @user == current_user %>
           <h1>サーフポイントの作成</h1>
         <% end %>
         </div>
@@ -43,19 +43,23 @@
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
-            <!-- <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm"%> -->
+            <% if @user == current_user %>
+              <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
+            <% end %>
           </li>
           <% end %>
         </ul>
 
-        <h1 style="padding-left: 100px">共有されているユーザー</h1>
-          <ul class="list-group" style="max-width: 300px;">
-            <% @users.each do |users| %>
-              <li class="list-group-item">
-                <%= link_to users.name, board_path(users.id) %>
-              </li>
-            <% end %>
-          </ul>
+        <% if @user == current_user %>
+          <h1 style="padding-left: 100px">共有されているユーザー</h1>
+            <ul class="list-group" style="max-width: 300px;">
+              <% @users.each do |users| %>
+                <li class="list-group-item">
+                  <%= link_to users.name, board_path(users.id) %>
+                </li>
+              <% end %>
+            </ul>
+        <% end %>
 
         <% if @user == current_user %>
         <!-- ユーザーを検索フォームへ遷移するボタン -->
