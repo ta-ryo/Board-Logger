@@ -9,6 +9,22 @@ body {
 @media screen and (min-device-width:768px){
   //画面サイズが768px以上の場合読み込む
 
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
   //全部に影響
   .box11{
       padding: 0.5em 1em;
@@ -30,6 +46,23 @@ body {
 // スマホ用に
 @media screen and (max-device-width:767px) {
   //　画面サイズが767px以下の場合読み込む
+
+  /* header */
+  #logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+  }
+
+  #logo:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 
   body{
     zoom: 300%;//全体的にズームをし、大きくした
