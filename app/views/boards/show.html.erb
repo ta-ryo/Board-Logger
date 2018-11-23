@@ -113,7 +113,7 @@
             <td><%= manner.entry %></td>
             <td>
             <% @photo.where(manner_id: manner.id).each do |d| %>
-              <%= image_tag "data:image/jpeg;base64,#{d.image}",:size =>'240x220' if d.image? %>
+            <%= image_tag "data:image/jpeg;base64,#{d.image}",:size =>'240x220' if d.image? %>
             <% end %>
             <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
               <% f.label :image %>
