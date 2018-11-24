@@ -44,6 +44,10 @@
           <li class="list-group-item">
             <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
             <% if @user == current_user %>
+              <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
+                <%= hidden_field_tag :board_id, boards.id %>
+                <%= submit_tag '共有するユーザの選択へ' %>
+              <% end %>
               <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
             <% end %>
           </li>
@@ -62,12 +66,6 @@
         <% end %>
 
         <% if @user == current_user %>
-        <!-- ユーザーを検索フォームへ遷移するボタン -->
-        <ul class="list-group" style="max-width: 320px; padding-top: 50px;">
-          <li class="list-group-item">
-            <%= link_to "ユーザーを検索する", boards_search_path %>
-          </li>
-        </ul>
 
           <%= link_to "Log out", logout_path, method: :delete %>
         <% else %>

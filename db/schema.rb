@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_053451) do
+ActiveRecord::Schema.define(version: 2018_11_22_123101) do
 
   create_table "boards", force: :cascade do |t|
     t.string "location"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2018_11_20_053451) do
     t.index ["board_id"], name: "index_maps_on_board_id"
   end
 
+  create_table "middles", force: :cascade do |t|
+    t.integer "board_id"
+    t.integer "relationship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "moods", force: :cascade do |t|
     t.string "mood"
     t.integer "board_id"
@@ -58,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_11_20_053451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 

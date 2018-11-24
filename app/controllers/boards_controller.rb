@@ -35,6 +35,8 @@ class BoardsController < ApplicationController
   def search
     @users = User.all
     @other = User.search(params[:search])
+
+    @board = params[:board_id]
   end
 
   def create

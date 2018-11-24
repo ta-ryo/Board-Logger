@@ -5,6 +5,7 @@
       <!-- ユーザーの検索フォーム -->
       <%= form_tag(boards_search_path,:method => 'get') do %>
         <%= text_field_tag :search %>
+        <%= hidden_field_tag :board_id,  @board %>
         <%= submit_tag 'Search', :name => nil %>
       <% end %>
 
@@ -20,7 +21,11 @@
             <% else %><!-- 共有していなかったら．．． -->
               <%= form_for(current_user.active_relationships.build) do |f| %>
                 <div><%= hidden_field_tag :followed_id, user.id %></div>
-                <%= f.submit "共有する", class: "btn btn-primary" %>
+                <%= form_for(current_user.active_relationships.build) do |f| %>
+                      <%= hidden_field_tag :followed_id, user.id %>
+                      <%= hidden_field_tag :board_id,  @board %>
+                  <%= f.submit "共有する", class: "btn btn-primary" %>
+                <% end %>
               <% end %>
             <% end %>
           </li>
